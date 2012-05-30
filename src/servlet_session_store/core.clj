@@ -22,4 +22,10 @@
   (delete-session [_ key] (.removeAttribute hs ^String key)))
 
 (defn servlet-session-store [http-session-spec]
-  (ServletSessionStore. (as-http-session http-session-spec)))
+  (ServletSessionStore.
+   (as-http-session http-session-spec)))
+
+(defn wrap-servlet-session [handler]
+  (fn [request]
+    (handler
+     (assoc request :session (servlet-session-store request)))))
