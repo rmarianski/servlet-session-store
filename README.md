@@ -9,6 +9,7 @@ jetty.
 
 ## Usage
 
+```clj
 (use '[servlet-session-store.core :only (wrap-servlet-session)])
 
 (wrap-servlet-session ring-handler)
@@ -18,6 +19,7 @@ jetty.
 (defn view [request]
   (let [session-store (:session request)]
     (read-session session-store "foo")))
+```
 
 ## License
 
