@@ -6,7 +6,7 @@
   (^HttpSession as-http-session [_]))
 
 (extend-protocol HttpSessionCoercion
-  clojure.lang.APersistentMap
+  java.util.Map
   (as-http-session [m] (as-http-session (:servlet-request m)))
 
   HttpServletRequest
